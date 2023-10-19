@@ -90,20 +90,38 @@ def play_game(board, player_position, goals_position):
 
 
 def main():
+    print("~~ Selamat datang dipermainan board game pemrograman fungsional")
+    print(
+        "------------------------------------------------------------------------------------------------"
+    )
+    print(
+        "Anda (A) dapat berjalan secra horizontal dan vertikal menuju target (O)\nGunakan keyboard ASDW untuk berjalan"
+    )
+    print(
+        "------------------------------------------------------------------------------------------------"
+    )
+    print("~~ Selamat bermain ~~\n")
     width = int(input("Masukkan lebar board: "))
     height = int(input("Masukkan tinggi board: "))
 
-    while True:
+    regenerate_count = (
+        0  # Variabel untuk menghitung berapa kali pemain membuat ulang papan
+    )
+
+    while regenerate_count < 3:  # Memastikan jumlah ulangan tidak melebihi 3
         board = create_board(width, height)
         player_position = place_player(board)
         goals_position = place_goals(board)
 
         display_board(board)
 
-        regenerate_board = input("Bikin ulang papannya? (ya/tidak): ").lower()
+        regenerate_board = input("Bikin ulang pannya? (ya/tidak): ").lower()
         if regenerate_board != "ya":
             break
-    play_game(board, player_position, goals_position)
+        regenerate_count += 1
+
+    if regenerate_count < 3:
+        play_game(board, player_position, goals_position)
 
 
 if __name__ == "__main__":
