@@ -1,0 +1,26 @@
+{
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  "python.formatting.provider": "none",
+  "cSpell.words": [
+    "akun",
+    "berhasil",
+    "Buku",
+    "dikembalikan",
+    "Dipinjam",
+    "Gagal",
+    "Hanya",
+    "Inisialisasi",
+    "jenis",
+    "judul",
+    "kembalikan",
+    "meminjam",
+    "oleh",
+    "penulis",
+    "pinjam",
+    "pinjaman",
+    "sedang",
+    "tersedia"
+  ]
+}
