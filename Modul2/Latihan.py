@@ -4,31 +4,26 @@ expenses = [
     {"tanggal": "2023-07-26", "deskripsi": "Belanja", "jumlah": 100000},
 ]
 
-# TODO 1 Buatlah Fungsi add_expense disini
+
+# Fungsi pure untuk menambahkan pengeluaran
+def add_expense(date, description, amount, expense_list):
+    return expense_list + [
+        {"tanggal": date, "deskripsi": description, "jumlah": amount}
+    ]
 
 
-def add_expense(date, description, amount):
-    global expenses  # Gunakan variabel global
-    add = expenses.append({"tanggal": date, "deskripsi": description, "jumlah": amount})
-    return add  # Kembalikan daftar expenses
-
-
-# TODO 2 Buatlah fungsi calculate_total_expenses disini
-
+# Fungsi pure untuk menghitung total pengeluaran
 calculate_total_expenses = lambda expenses: sum(
     expense["jumlah"] for expense in expenses
 )
 
-# TODO 3 Buatlah fungsi get_expenses_ by_date disini
 
-
+# Fungsi pure untuk mendapatkan pengeluaran berdasarkan tanggal
 def get_expenses_by_date(expense_list, target_date):
     return [expense for expense in expense_list if expense["tanggal"] == target_date]
 
 
-# TODO 4 Buatlah fungsi generate_expenses_report disini
-
-
+# Fungsi pure untuk menghasilkan laporan pengeluaran harian
 def generate_expenses_report(expense_list):
     daily_expenses = {}
 
@@ -39,24 +34,22 @@ def generate_expenses_report(expense_list):
         else:
             daily_expenses[date] = [expense]
 
-    for date, expenses in daily_expenses.items():
-        total_expense = sum(expense["jumlah"] for expense in expenses)
-        yield f"{date} - Total Pengeluaran: Rp {total_expense}"
+    return (
+        f"{date} - Total Pengeluaran: Rp {sum(expense['jumlah'] for expense in expenses)}"
+        for date, expenses in daily_expenses.items()
+    )
 
 
-# TODO 5 pastikan semua fungsi yang ada sudah berupa pure function
-# jika belum, maka modifikasilah
-
-
+# Fungsi pure untuk menambah pengeluaran interaktif
 def add_expense_interactively(expenses):
     date = input("Masukkan tanggal pengeluaran (YYYY-MM-DD): ")
     description = input("Masukkan deskripsi pengeluaran: ")
     amount = int(input("Masukkan jumlah pengeluaran: "))
-    new_expenses = add_expense(date, description, amount)
     print("Pengeluaran berhasil ditambahkan.")
-    return new_expenses
+    return add_expense(date, description, amount, expenses)
 
 
+# Fungsi pure untuk melihat pengeluaran berdasarkan tanggal
 def view_expenses_by_date(expenses):
     date = input("Masukkan tanggal (YYYY-MM-DD): ")
     expenses_on_date = get_expenses_by_date(expenses, date)
@@ -65,6 +58,7 @@ def view_expenses_by_date(expenses):
         print(f"{expense['deskripsi']} - Rp {expense['jumlah']}")
 
 
+# Fungsi pure untuk melihat laporan pengeluaran harian
 def view_expenses_report(expenses):
     print("\nLaporan Pengeluaran Harian:")
     expenses_report = generate_expenses_report(expenses)
@@ -72,6 +66,11 @@ def view_expenses_report(expenses):
         print(entry)
 
 
+# Fungsi pure untuk mendapatkan input pengguna
+get_user_input = lambda command: int(input(command))
+
+
+# Fungsi pure untuk menampilkan menu
 def display_menu():
     print("\n===== Aplikasi Pencatat Pengeluaran Harian =====")
     print("1. Tambah Pengeluaran")
@@ -79,11 +78,6 @@ def display_menu():
     print("3. Lihat Pengeluaran berdasarkan Tanggal")
     print("4. Lihat Laporan Pengeluaran Harian")
     print("5. Keluar")
-
-
-# TODO 6 ubah fungsi berikut ke dalam bentuk lambda
-def get_user_input(command):
-    return int(input(command))
 
 
 def main():
