@@ -104,24 +104,17 @@ def main():
     width = int(input("Masukkan lebar board: "))
     height = int(input("Masukkan tinggi board: "))
 
-    regenerate_count = (
-        0  # Variabel untuk menghitung berapa kali pemain membuat ulang papan
-    )
-
-    while regenerate_count < 3:  # Memastikan jumlah ulangan tidak melebihi 3
+    while True:
         board = create_board(width, height)
         player_position = place_player(board)
         goals_position = place_goals(board)
 
         display_board(board)
 
-        regenerate_board = input("Bikin ulang pannya? (ya/tidak): ").lower()
+        regenerate_board = input("Bikin ulang papannya? (ya/tidak): ").lower()
         if regenerate_board != "ya":
             break
-        regenerate_count += 1
-
-    if regenerate_count < 3:
-        play_game(board, player_position, goals_position)
+    play_game(board, player_position, goals_position)
 
 
 if __name__ == "__main__":
