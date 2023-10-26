@@ -19,6 +19,8 @@ def currying_weeks_to_minutes(weeks):
 
 
 output_data = []
+final = []
+
 
 for entry in data:
     parts = entry.split()
@@ -29,11 +31,16 @@ for entry in data:
 
     total_minutes = currying_weeks_to_minutes(weeks)(days)(hours)(minutes)
     output_data.append(total_minutes)
+    int_only = list(filter(str.isdigit, parts))
+    final.append(int_only)
 print("Hasil latihan 1 ")
 print(output_data)
 
-integer_values = [list(filter(str.isdigit, entry)) for entry in data]
+# integer_values = [list(filter(str.isdigit, entry)) for entry in data]
 
-print("\nHasil latihan 2 ")
-for entry in integer_values:
-    print(entry)
+
+print(final)
+
+# print("\nHasil latihan 2 ")
+# for entry in int_only:
+#     print(entry)
