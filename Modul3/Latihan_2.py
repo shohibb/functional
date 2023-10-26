@@ -19,14 +19,14 @@ int_values = list(filter(lambda x: isinstance(x, int), data))
 str_values = list(filter(lambda x: isinstance(x, str), data))
 
 
-def map_to_units(value):
+def mapping(value):
     ratusan = value // 100
     puluhan = (value // 10) % 10
     satuan = value % 10
     return {"ratusan": ratusan, "puluhan": puluhan, "satuan": satuan}
 
 
-int_mapped = list(map(map_to_units, int_values))
+int_mapped = list(map(mapping, int_values))
 
 print("Data Float:")
 print(tuple(float_values))

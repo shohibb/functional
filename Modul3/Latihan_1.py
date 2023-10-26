@@ -31,16 +31,12 @@ for entry in data:
 
     total_minutes = currying_weeks_to_minutes(weeks)(days)(hours)(minutes)
     output_data.append(total_minutes)
-    int_only = list(filter(str.isdigit, parts))
-    final.append(int_only)
+
 print("Hasil latihan 1 ")
 print(output_data)
+print("Hasil latihan 2 ")
 
-# integer_values = [list(filter(str.isdigit, entry)) for entry in data]
-
-
-print(final)
-
-# print("\nHasil latihan 2 ")
-# for entry in int_only:
-#     print(entry)
+for entry in data:
+    parts2 = entry.split()
+    int_only = list(filter(str.isdigit, parts2))
+    print(int_only)
