@@ -28,7 +28,6 @@ def map_to_units(value):
 
 int_mapped = list(map(map_to_units, int_values))
 
-
 print("Data Float:")
 print(tuple(float_values))
 print("Data Int:")
