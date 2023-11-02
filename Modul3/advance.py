@@ -1,4 +1,5 @@
-# Data film
+from functools import reduce
+
 movies = [
     {"title": "Avengers: Endgame", "year": 2019, "rating": 8.4, "genre": "Action"},
     {"title": "Parasite", "year": 2019, "rating": 8.6, "genre": "Drama"},
@@ -19,34 +20,42 @@ movies = [
 ]
 
 
-# Fungsi untuk menghitung jumlah film berdasarkan genre
 def count_movies_by_genre(movies):
+    def mapper(movie):
+        return movie["genre"]
+
+    genres = list(map(mapper, movies))
+
     genre_count = {}
-    for movie in movies:
-        genre = movie["genre"]
+    for genre in genres:
         if genre in genre_count:
             genre_count[genre] += 1
         else:
             genre_count[genre] = 1
+
     return genre_count
 
 
-# Fungsi untuk menghitung rata-rata rating film berdasarkan tahun rilis
 def calculate_average_rating_by_year(movies):
-    year_rating = {}
-    count_rating = {}
-    for movie in movies:
+    def reducer(acc, movie):
         year = movie["year"]
         rating = movie["rating"]
-        if year in year_rating:
-            year_rating[year] += rating
-            count_rating[year] += 1
+        if year in acc["year_rating"]:
+            acc["year_rating"][year] += rating
+            acc["count_rating"][year] += 1
         else:
-            year_rating[year] = rating
-            count_rating[year] = 1
+            acc["year_rating"][year] = rating
+            acc["count_rating"][year] = 1
+        return acc
+
+    initial_state = {"year_rating": {}, "count_rating": {}}
+    result = reduce(reducer, movies, initial_state)
+
     average_rating = {
-        year: year_rating[year] / count_rating[year] for year in year_rating
+        year: result["year_rating"][year] / result["count_rating"][year]
+        for year in result["year_rating"]
     }
+
     return average_rating
 
 
@@ -58,9 +67,11 @@ def find_highest_rated_movie(movies):
 
 # Fungsi untuk mencari judul film berdasarkan judul
 def find_movie_by_title(movies, title):
-    for movie in movies:
-        if movie["title"].lower() == title.lower():
-            return movie
+    matching_movies = list(
+        filter(lambda movie: movie["title"].lower() == title.lower(), movies)
+    )
+    if matching_movies:
+        return matching_movies[0]
     return None
 
 
