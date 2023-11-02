@@ -32,6 +32,7 @@ for entry in data:
     total_minutes = currying_weeks_to_minutes(weeks)(days)(hours)(minutes)
     output_data.append(total_minutes)
 
+
 print("Hasil latihan 1 ")
 print(output_data)
 print("Hasil latihan 2 ")
