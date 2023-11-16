@@ -13,4 +13,4 @@ def line_equation_of(p1, p2):
 
 # Output
 print("Persamaan garis yang melalui titik A dan B:")
-print(line_equation_of(point(4, -2), point(-1, 3)))
+print(line_equation_of(point(1, 1), point(3, 5)))

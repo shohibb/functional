@@ -10,31 +10,31 @@ rotation = lambda edge: lambda p: (
 )
 
 
-def translation(tx, ty):
-    def transform(p):
-        x, y = p
-        return x + tx, y + ty
+# def translation(tx, ty):
+#     def transform(p):
+#         x, y = p
+#         return x + tx, y + ty
 
-    return transform
-
-
-def dilation(sx, sy):
-    def transform(p):
-        x, y = p
-        return x * sx, y * sy
-
-    return transform
+#     return transform
 
 
-def rotation(edge):
-    def transform(p):
-        x, y = p
-        theta = radians(edge)
-        new_x = x * cos(theta) - y * sin(theta)
-        new_y = x * sin(theta) + y * cos(theta)
-        return new_x, new_y
+# def dilation(sx, sy):
+#     def transform(p):
+#         x, y = p
+#         return x * sx, y * sy
 
-    return transform
+#     return transform
+
+
+# def rotation(edge):
+#     def transform(p):
+#         x, y = p
+#         theta = radians(edge)
+#         new_x = x * cos(theta) - y * sin(theta)
+#         new_y = x * sin(theta) + y * cos(theta)
+#         return new_x, new_y
+
+#     return transform
 
 
 def main():

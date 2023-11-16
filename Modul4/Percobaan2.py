@@ -11,4 +11,5 @@ def say_hi():
 
 
 decorate = uppercase_decorator(say_hi)
-print(decorate())
+# print(decorate())
+decorate()
