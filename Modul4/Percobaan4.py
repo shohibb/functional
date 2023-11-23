@@ -40,17 +40,17 @@ rotation = lambda edge: lambda p: (
 def main():
     coord = (3, 5)
 
-    # Translasi
-    new_translation = translation(2, -1)
+    # Translation
+    new_translation = translation(2, -1.7)
     translation_coord = new_translation(coord)
     print("Koordinat setelah translasi:", translation_coord)
 
-    # Dilatasi
+    # Dilation
     new_dilation = dilation(2, -1)
     dilation_coord = new_dilation(coord)
     print("Koordinat setelah dilatasi:", dilation_coord)
 
-    # Rotasi
+    # Rotation
     new_rotation = rotation(30)
     rotation_coord = new_rotation(coord)
     print("Koordinat setelah rotasi:", rotation_coord)
