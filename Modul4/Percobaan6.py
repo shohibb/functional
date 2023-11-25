@@ -9,4 +9,4 @@ def line_equation_of(p1, M):
 
 # Output
 print("Persamaan garis yang melalui satu titik :")
-print(line_equation_of(point(1, -3), -5))
+print(line_equation_of(point(2.250000000000001, 5.196152422706632), 5))

@@ -2,6 +2,17 @@ def point(x, y):
     return x, y
 
 
+def log_inputs(func):
+    def wrapper(*args, **kwargs):
+        print(f"Calling func with args: {args} and kwargs: {kwargs}")
+        result = func(*args, **kwargs)
+        print(f"Function {func.__name__} returned: {result}")
+        return result
+
+    return wrapper
+
+
+# @log_inputs
 def line_equation_of(p1, M):
     C = p1[1] - M * p1[0]
     return f"y = {M:.2f}x + {C:.2f}"
@@ -25,20 +36,24 @@ m = float(input("enter the gradient : "))
 print("Persamaan garis yang melalui satu titik :")
 print(line_equation_of(point(x, y), m))
 
+# result = log_inputs(line_equation_of(point(x, y), m))
+# print(result)
 
+
+# @log_inputs
 def transform(p, tx, ty, edge, sx, sy):
     return dilation(sx, sy)(rotation(edge)(translation(tx, ty)(p)))
 
 
-tx = 2
-ty = -3
-edge = 60
-sx = 1.5
-sy = 2
+tx = float(input("masukan tx :"))
+ty = float(input("masukan ty :"))
+edge = float(input("masukan edge :"))
+sx = float(input("masukan sx :"))
+sy = float(input("masukan sy :"))
 
 # Apply transformation to points
 p1_transformed = transform(point(x, y), tx, ty, edge, sx, sy)
-
+print(p1_transformed)
 # Calculate new line equation based on transformed points
 new_line_equation = line_equation_of(p1_transformed, m)
 
