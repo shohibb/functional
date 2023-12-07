@@ -27,6 +27,6 @@ print(probability)
 
 # sample mean and std
 plt.hist(sample, bins=10, density=True)
-plt.bar(values, probability)
+plt.plot(values, probability)
 plt.show()
 print("Mean: %.3f\nStandard deviation: %.3f" % (sample_mean, sample_std))
