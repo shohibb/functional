@@ -12,6 +12,7 @@ size = 24
 draw = ImageDraw.Draw(gambarBW)
 font = ImageFont.truetype(direktoriFont, size)
 text = "Akmal shahib maulana 2021-135"
+
 text_width = draw.textlength(text, font)
 text_y = gambarku.height - font.size
 text_x = (gambarku.width - text_width) // 2
