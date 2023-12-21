@@ -1,5 +1,5 @@
 # TODO 0 : Import beberapa library lain yang dibutuhkan
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image
 
 # TODO 1 : Buka gambar latar belakang (background) dan gambar yang ingin disisipkan (overlay)
 background_image = Image.open(r"Modul6\view-umm.jpg")
