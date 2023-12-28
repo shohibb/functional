@@ -14,8 +14,8 @@ for item in random_list:
     elif isinstance(item, int):
         satuan = item % 10
         puluhan = (item // 10) % 10
-        ratusan = item // 10
-        int_data[item] = {"satuan", satuan, "puluhan", puluhan, "ratusan", ratusan}
+        ratusan = item // 100
+        int_data[item] = {"satuan": satuan, "puluhan": puluhan, "ratusan": ratusan}
 
 print(string_list)
 print(float_list)
