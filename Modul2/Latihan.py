@@ -192,7 +192,6 @@ def get_user_input(command):
 
 
 def main():
-    global expenses
     while True:
         display_menu()
         choice = get_user_input("Pilih menu (1/2/3/4/5): ")
